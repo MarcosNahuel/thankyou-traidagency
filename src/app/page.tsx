@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { ThankYouContent } from "@/types";
 import Image from "next/image";
-import { Youtube, Instagram, Linkedin, CheckCircle, BookOpen } from "lucide-react";
+import { Youtube, Instagram, Linkedin, CheckCircle, BookOpen, ExternalLink } from "lucide-react";
 
 async function getContent(): Promise<ThankYouContent | null> {
   const supabase = await createClient();
@@ -18,8 +18,8 @@ async function getContent(): Promise<ThankYouContent | null> {
   return data;
 }
 
-// Videos de casos de éxito
-const casosDeExito = [
+// Videos de casos de éxito (YouTube)
+const casosDeExitoVideos = [
   {
     id: 1,
     videoId: "KrmHEjth384",
@@ -34,6 +34,106 @@ const casosDeExito = [
     id: 3,
     videoId: "WZZG-kLDMsU",
     title: "Caso de Éxito #3",
+  },
+];
+
+// Casos de éxito TRAID - Cards con dashboards
+const casosDeExitoTRAID = [
+  {
+    id: 1,
+    icon: "🔄",
+    iconBg: "bg-purple-500/20",
+    title: "Rohana",
+    caseNumber: "Caso #001",
+    description: "Sistema inteligente de recuperación de carritos abandonados con WhatsApp automatizado y seguimiento personalizado.",
+    tags: ["Recuperación", "WhatsApp", "Automatización"],
+    statValue: "+28%",
+    statLabel: "Tasa de recuperación",
+    dashboardUrl: "https://traidagency.com/dashboards/rohana",
+  },
+  {
+    id: 2,
+    icon: "📊",
+    iconBg: "bg-blue-500/20",
+    title: "MELI Analytics",
+    caseNumber: "Caso #002",
+    description: "Dashboard ejecutivo que consolida métricas de múltiples cuentas de Mercado Libre con KPIs en tiempo real.",
+    tags: ["Analytics", "Multi-cuenta", "Real-time"],
+    statValue: "+61%",
+    statLabel: "Crecimiento en ventas",
+    dashboardUrl: "https://traidagency.com/dashboards/meli-analytics",
+  },
+  {
+    id: 3,
+    icon: "⚡",
+    iconBg: "bg-yellow-500/20",
+    title: "Gambimedic",
+    caseNumber: "Caso #003",
+    description: "Procesamiento masivo de datos médicos con validación automática y sincronización entre sistemas.",
+    tags: ["Procesamiento", "Healthcare", "Sync"],
+    statValue: "58x",
+    statLabel: "Velocidad de proceso",
+    dashboardUrl: "https://traidagency.com/dashboards/gambimedic",
+  },
+  {
+    id: 4,
+    icon: "🛒",
+    iconBg: "bg-green-500/20",
+    title: "Mundial Shop",
+    caseNumber: "Caso #004",
+    description: "Gestión centralizada de inventario multi-marketplace con alertas de stock y reposición automática.",
+    tags: ["Inventario", "Multi-marketplace", "Alertas"],
+    statValue: "+35%",
+    statLabel: "Crecimiento mensual",
+    dashboardUrl: "https://traidagency.com/dashboards/mundial-shop",
+  },
+  {
+    id: 5,
+    icon: "🔁",
+    iconBg: "bg-red-500/20",
+    title: "Huancom Group",
+    caseNumber: "Caso #005",
+    description: "Sistema de reversión de mediaciones con análisis predictivo y respuestas automatizadas.",
+    tags: ["Mediaciones", "IA", "Automatización"],
+    statValue: "+47.9%",
+    statLabel: "Tasa de reversión",
+    dashboardUrl: "https://traidagency.com/dashboards/huancom",
+  },
+  {
+    id: 6,
+    icon: "🌿",
+    iconBg: "bg-emerald-500/20",
+    title: "NATURAL VyA",
+    caseNumber: "Caso #006",
+    description: "Automatización completa de operaciones para 2 marcas con dashboard unificado y procesamiento de +9,000 órdenes.",
+    tags: ["Multi-marca", "Automatización", "Dashboard"],
+    statValue: "+529%",
+    statLabel: "ROI en automatización",
+    dashboardUrl: "https://traidagency.com/dashboards/natural",
+  },
+  {
+    id: 7,
+    icon: "👗",
+    iconBg: "bg-pink-500/20",
+    title: "Mikaela Boutique",
+    caseNumber: "Caso #007",
+    description: "Estrategia omnicanal con sincronización de stock y atención automatizada vía WhatsApp Business.",
+    tags: ["Moda", "Omnicanal", "WhatsApp"],
+    statValue: "+46%",
+    statLabel: "Incremento en ventas",
+    dashboardUrl: "https://traidagency.com/dashboards/mikaela",
+  },
+  {
+    id: 8,
+    icon: "💬",
+    iconBg: "bg-cyan-500/20",
+    title: "Tienda Lubbi",
+    caseNumber: "Caso #008",
+    description: "Sistema de atención al cliente con IA que reduce tiempos de respuesta y mejora la satisfacción.",
+    tags: ["Atención", "IA", "Customer Success"],
+    statValue: "-62.6%",
+    statLabel: "Reducción FRT",
+    dashboardUrl: "https://traidagency.com/dashboards/lubbi",
   },
 ];
 
@@ -194,22 +294,70 @@ export default async function ThankYouPage() {
             </section>
           )}
 
-          {/* PASO 4: Casos de Éxito - YouTube */}
+          {/* PASO 4: Casos de Éxito TRAID - Cards */}
           <section>
             <div className="text-center mb-6">
               <span className="text-sm font-bold text-purple-400 tracking-widest uppercase">
                 Paso 4
               </span>
               <h2 className="text-2xl md:text-3xl font-bold mt-2">
-                <span className="gradient-text">Casos de Éxito</span> Reales
+                <span className="gradient-text">Casos de Éxito</span> TRAID
               </h2>
               <p className="text-gray-400 mt-3">
-                Mira cómo hemos ayudado a otros negocios a escalar
+                Resultados reales de clientes que confiaron en nosotros
+              </p>
+            </div>
+
+            <div className="case-study-carousel">
+              {casosDeExitoTRAID.map((caso) => (
+                <div key={caso.id} className="case-study-card">
+                  <div className={`case-study-icon ${caso.iconBg}`}>
+                    {caso.icon}
+                  </div>
+                  <div className="case-study-header">
+                    <h3 className="case-study-title">{caso.title}</h3>
+                    <span className="case-study-number">{caso.caseNumber}</span>
+                  </div>
+                  <p className="case-study-description">{caso.description}</p>
+                  <div className="case-study-tags">
+                    {caso.tags.map((tag) => (
+                      <span key={tag} className="case-study-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <div className="case-study-stat">
+                    <span className="case-study-stat-value">{caso.statValue}</span>
+                    <span className="case-study-stat-label">{caso.statLabel}</span>
+                  </div>
+                  <a
+                    href={caso.dashboardUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="case-study-btn"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Ver dashboard
+                  </a>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* PASO 5: Testimonios en Video - YouTube */}
+          <section>
+            <div className="text-center mb-6">
+              <span className="text-sm font-bold text-purple-400 tracking-widest uppercase">
+                Paso 5
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold mt-2">
+                <span className="gradient-text">Testimonios</span> en Video
+              </h2>
+              <p className="text-gray-400 mt-3">
+                Escucha directamente de nuestros clientes
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {casosDeExito.map((caso) => (
+              {casosDeExitoVideos.map((caso) => (
                 <div key={caso.id} className="glass-card rounded-2xl p-2">
                   <div className="aspect-video rounded-xl overflow-hidden">
                     <iframe
