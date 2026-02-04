@@ -1,7 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { ThankYouContent } from "@/types";
 import Image from "next/image";
-import { Youtube, Instagram, Linkedin, CheckCircle, BookOpen, ExternalLink } from "lucide-react";
+import { Youtube, Instagram, Linkedin, CheckCircle, BookOpen } from "lucide-react";
+import { CaseStudyCarousel } from "@/components/CaseStudyCarousel";
 
 async function getContent(): Promise<ThankYouContent | null> {
   const supabase = await createClient();
@@ -320,38 +321,7 @@ export default async function ThankYouPage() {
               </p>
             </div>
 
-            <div className="case-study-carousel">
-              {casosDeExitoTRAID.map((caso) => (
-                <div key={caso.id} className="case-study-card">
-                  <div className={`case-study-icon ${caso.iconBg}`}>
-                    {caso.icon}
-                  </div>
-                  <div className="case-study-header">
-                    <h3 className="case-study-title">{caso.title}</h3>
-                    <span className="case-study-number">{caso.caseNumber}</span>
-                  </div>
-                  <p className="case-study-description">{caso.description}</p>
-                  <div className="case-study-tags">
-                    {caso.tags.map((tag) => (
-                      <span key={tag} className="case-study-tag">{tag}</span>
-                    ))}
-                  </div>
-                  <div className="case-study-stat">
-                    <span className="case-study-stat-value">{caso.statValue}</span>
-                    <span className="case-study-stat-label">{caso.statLabel}</span>
-                  </div>
-                  <a
-                    href={caso.dashboardUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="case-study-btn"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Ver dashboard
-                  </a>
-                </div>
-              ))}
-            </div>
+            <CaseStudyCarousel cases={casosDeExitoTRAID} autoPlayInterval={4000} />
           </section>
 
           {/* PASO 5: Testimonios en Video - YouTube */}
