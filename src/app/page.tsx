@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { ThankYouContent } from "@/types";
 import Image from "next/image";
-import { Download, Youtube, Instagram, Linkedin, CheckCircle, BookOpen, Play } from "lucide-react";
+import { Youtube, Instagram, Linkedin, CheckCircle, BookOpen } from "lucide-react";
 
 async function getContent(): Promise<ThankYouContent | null> {
   const supabase = await createClient();
@@ -137,48 +137,11 @@ export default async function ThankYouPage() {
             </div>
           </section>
 
-          {/* PASO 3: PDF Download */}
+          {/* PASO 3: Catálogo */}
           <section>
             <div className="text-center mb-6">
               <span className="text-sm font-bold text-purple-400 tracking-widest uppercase">
                 Paso 3
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold mt-2">
-                Descarga tu <span className="gradient-text">Plan de Vuelo</span>
-              </h2>
-              <p className="text-gray-400 mt-3">
-                Mientras esperas, lee esta guía confidencial sobre nuestra operativa
-              </p>
-            </div>
-
-            <div className="flex justify-center">
-              {content?.pdf_url ? (
-                <a
-                  href={content.pdf_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center gap-3 text-lg"
-                >
-                  <Download className="w-5 h-5" />
-                  DESCARGAR GUÍA PDF
-                </a>
-              ) : (
-                <button
-                  disabled
-                  className="btn-primary opacity-50 cursor-not-allowed inline-flex items-center gap-3 text-lg"
-                >
-                  <Download className="w-5 h-5" />
-                  PRÓXIMAMENTE
-                </button>
-              )}
-            </div>
-          </section>
-
-          {/* PASO 4: Catálogo */}
-          <section>
-            <div className="text-center mb-6">
-              <span className="text-sm font-bold text-purple-400 tracking-widest uppercase">
-                Paso 4
               </span>
               <h2 className="text-2xl md:text-3xl font-bold mt-2">
                 Explora nuestro <span className="gradient-text">Catálogo de Servicios</span>
@@ -231,11 +194,11 @@ export default async function ThankYouPage() {
             </section>
           )}
 
-          {/* PASO 5: Casos de Éxito - YouTube */}
+          {/* PASO 4: Casos de Éxito - YouTube */}
           <section>
             <div className="text-center mb-6">
               <span className="text-sm font-bold text-purple-400 tracking-widest uppercase">
-                Paso 5
+                Paso 4
               </span>
               <h2 className="text-2xl md:text-3xl font-bold mt-2">
                 <span className="gradient-text">Casos de Éxito</span> Reales
