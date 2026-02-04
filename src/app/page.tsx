@@ -135,6 +135,18 @@ const casosDeExitoTRAID = [
     statLabel: "Reducción FRT",
     dashboardUrl: "https://traidagency.com/dashboards/caso-lubbi.html",
   },
+  {
+    id: 9,
+    icon: "🏥",
+    iconBg: "bg-cyan-500/20",
+    title: "Ortopedia Belgrano",
+    caseNumber: "Caso #009",
+    description: "Sistema de IA para preventa en Mercado Libre. Incrementó consultas +8,025% con automatización 61% modelo híbrido IA + humano.",
+    tags: ["Salud", "MercadoLibre", "IA Preventa"],
+    statValue: "+8,025%",
+    statLabel: "Crecimiento en volumen",
+    dashboardUrl: "https://traidagency.com/dashboards/caso-ortopedia.html",
+  },
 ];
 
 // Video intro Wistia
