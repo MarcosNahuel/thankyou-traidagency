@@ -141,12 +141,12 @@ body {
   overflow: hidden;
 }
 
-/* Solo aplicar aspect ratio cuando contiene iframe */
-.video-container:has(iframe) {
+/* Solo aplicar aspect ratio cuando contiene iframe directo (no Wistia) */
+.video-container:has(> iframe) {
   padding-bottom: 56.25%; /* 16:9 */
 }
 
-.video-container iframe,
+.video-container > iframe,
 .video-container video {
   position: absolute;
   top: 0;
@@ -160,6 +160,11 @@ body {
 .video-container wistia-player {
   display: block;
   width: 100%;
+}
+
+/* Asegurar que Wistia no tenga padding extra */
+.video-container:has(wistia-player) {
+  padding-bottom: 0 !important;
 }
 
 /* Testimonial Grid */
